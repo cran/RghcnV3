@@ -1,0 +1,3 @@
+DownloadAllV3    Downloads current V3 files.
+MaskTest        Downloads Masks, reads and plots.
+StationCount     Downloads Temperature and creates Station Count.
