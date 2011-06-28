@@ -1,4 +1,6 @@
 
+
+
 .cleanInvNames    <- function(names){
 # clean gchn names. Inventory specific name cleaning
   require("R.oo")
@@ -210,5 +212,24 @@ readMask<-function(filename){
                   crs="+proj=longlat +datum=WGS84")     
     return(world/100) 
 }
+
+readSST <- function(filename){
+   require("ncdf")
+   require("raster")
+   require("zoo")
+    
+   sea <- brick(x=filename,varname="sst")
+    
+   layerNames(sea) <- as.yearmon(layerNames(sea))
+   return(sea)   
+   
+}
+    
+   
+  
+   
+  
+  
+ 
              
  

@@ -3,7 +3,7 @@
  
 \title{ A function to return the stations from a data object}
  
-\description{ This convience function returns a vector of station Ids from
+\description{ This convenience function returns a vector of station Ids from
   a data.frame of anomalies, temperatures, or inventories.
   Depending on the data object the station Id can be contained in a named
   column (Inventory$Id), or as the column name in a "zoo" type data.frame

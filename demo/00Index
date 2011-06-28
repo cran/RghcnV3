@@ -1,3 +1,5 @@
 DownloadAllV3    Downloads current V3 files.
+Gridding        Anomalies are rasterized into a grid.
+LongRecords     Creates Unweighted Average of 100 year stations.
 MaskTest        Downloads Masks, reads and plots.
 StationCount     Downloads Temperature and creates Station Count.

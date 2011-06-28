@@ -55,5 +55,5 @@ readMask(filename)
  }
 }
  
-\keyword{ spatial}
+ 
 \keyword{file} 

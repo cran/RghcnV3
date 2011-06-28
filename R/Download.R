@@ -1,3 +1,19 @@
+GHCN.V3.DATA <-"GhcnV3Data"
+
+downloadSST <- function(url=HADSST2.URL,directory=getwd(),overwrite=FALSE,remove=FALSE){
+  require("ncdf")
+  if(!file.exists(directory))dir.create(directory)
+  dest <-file.path(directory,basename(url),fsep=.Platform$file.sep)
+  download.file(url,dest,mode="wb")
+	gunzip(dest,overwrite=overwrite,remove=remove)
+  fname <- sub(".gz","",dest,fixed= TRUE)
+  return(fname)
+}
+
+
+
+
+
 downloadMask<-function(url=WATER.MASK.URL,directory=getwd()){
   if(!file.exists(directory))dir.create(directory)
   dest <- file.path(directory,basename(url),fsep=.Platform$file.sep)

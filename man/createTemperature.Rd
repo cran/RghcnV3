@@ -65,5 +65,5 @@ using zoo functions.
  }
 }
  
-\keyword{ spatial }
+\keyword{ TimeSeries }
  

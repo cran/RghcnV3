@@ -85,5 +85,5 @@ downloadMask(url = WATER.MASK.URL, directory = getwd())
  \dontrun{ water <- downloadmask(url=WATER.MASK.URL)}
 }
  
-\keyword{ spatial }
+\keyword{ Download }
  

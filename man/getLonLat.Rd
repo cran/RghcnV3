@@ -1,7 +1,7 @@
 \name{getLonLat}
 \alias{getLonLat}
 
-\title{ A convience function to create a 2 column matrix of Longitude and Latitude
+\title{ A convenience function to create a 2 column matrix of Longitude and Latitude
   
 }
 \description{ The inventory data.frame has station Latitude and Longitude as

@@ -24,7 +24,7 @@
   of temperature data.
  
 }
-  \item{criteria}{ criteria is a list with 5 elements named  Start,
+  \item{criteria}{ criteria is a list with 4 elements named  Start,
   End, Years, and Threshold. Start defines The first year of the base
   period. End is the last date. Years, defines how many years of
   data are required in the period. Threshold defines the number of
@@ -76,5 +76,5 @@
  
 }
  
-\keyword{ spatial }
+\keyword{ TimeSeries }
  

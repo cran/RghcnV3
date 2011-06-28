@@ -6,3 +6,4 @@ V3.TMIN.RAW.URL <- "ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/v3/ghcnm.tmin.latest.q
 V3.TMIN.ADJ.URL <- "ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/v3/ghcnm.tmin.latest.qca.tar.gz" 
 WATER.MASK.URL<-"http://www.drivehq.com/file/df.aspx/publish/stevenmosher/land_percent_qd.asc Publish/land_percent_qd.asc"   
 OCEAN.MASK.URL<-"http://www.drivehq.com/file/df.aspx/publish/stevenmosher/land_percent2_qd.asc Publish/land_percent2_qd.asc"
+HADSST2.URL     <- "http://hadobs.metoffice.com/hadsst2/data/HadSST2_1850on.nc.gz"

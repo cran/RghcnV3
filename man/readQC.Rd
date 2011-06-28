@@ -51,4 +51,4 @@ readQC(filename, Parameters = FILE.PARAMETERS)
 }
  
 \keyword{ file }
-\keyword{ spatial } 
+ 

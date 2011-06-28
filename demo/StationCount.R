@@ -7,7 +7,7 @@
 #######################
 meanAdj     <- downloadV3(url=V3.MEAN.ADJ.URL)
 MeanAInv    <- readInventory(filename=meanAdj$InventoryFile)
-meanAdata   <- readV3Data(filename=filename=meanAdj$DataFilename)
+meanAdata   <- readV3Data(filename=meanAdj$DataFilename)
 meanAnomaly <- createAnomaly(meanAdata)
 
 DATA  <- intersectInvAnomalies(inv=MeanAInv,meanAnomaly)
