@@ -6,7 +6,7 @@
 }
 \description{A demo program in included that allows the user to
   download all of the data files used by this package. That demo
-  \code{downloadAllV3} will create a directory and download the
+  \code{demo(DemoSetup)} will create a directory and download the
   various datasets used in constructing a global temperature index.
  
 }
@@ -18,7 +18,7 @@
 \details{The data directory can be used to store various files
   that are downloaded from the internet for this package. The
   directory will be written below the current working directory
-  when the \code{demo(DownloadAllV3)} command is issues at the
+  when the \code{demo(DemoSetup)} command is issued at the
   console
  
 }

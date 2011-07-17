@@ -11,8 +11,8 @@
   is not taken into account. This is,therefore, a land-ocean mask.
   The resolution of the map is .25 degrees. Global coverage
   is -180 to 180 longitude by -90 to 90 latitude. A Land Water
-  mask is also available. This files, as described below, is 
-  a "qd" file or quarter degree, land fraction file.
+  mask is also available. This file , as described below, is 
+  a "qd" file or quarter degree land fraction file.
  
 }
 \usage{OCEAN.MASK.URL}

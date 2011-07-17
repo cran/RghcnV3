@@ -1,5 +1,5 @@
-\name{whichStationsCAM}
-\alias{whichStationsCAM}
+\name{passesCamV3}
+\alias{passesCamV3}
  
 \title{A function for picking stations that meet CAM criteria
  
@@ -19,24 +19,22 @@
   is set to 10. The function returns a object with the stations and their
   data
  
+ 
 }
-\usage{
-whichStationsCAM(dataZoo, criteria = list(Start = 1961, End = 1990, Year = 15, Threshold = 12))
+\usage{passesCamV3(Tdata, criteria = list(Start = 1961, End = 1990, 
+                   Years = 15, Threshold = 12))
 }
  
 \arguments{
-  \item{dataZoo}{The function must be supplied with a zoo object of temperatures
-    or anomalies. See function \code{createTemperature} and \code{anomalize}. 
-    
+  \item{Tdata}{Tdata is a data.frame in v3 format. 14 columns 
  
 }
-  \item{criteria}{criteria must be a list with 4 named elements. Start and End, 
-  Year and Threshold. Use whole years for all elements. 
+  \item{criteria}{A list of criteria to meet the CAM requirements
  
 }
 }
-\details{ The function operates by first checking the criteria that are supplied
-  for obvious errors such as Start being greater than end. Next the function 
+\details{The function operates by first checking the criteria that are supplied
+  for obvious errors such as Start being greater than End. Next the function 
   transforms the data into 0 and 1 depending on whether an NA is present or not.
   The number of valid temperatures or anomalies is computed for each year. A year
   with 12 months of data will have a count of 12. Then the number of years with
@@ -44,30 +42,31 @@ whichStationsCAM(dataZoo, criteria = list(Start = 1961, End = 1990, Year = 15, T
   that pass the criteria are returned.
  
 }
-\value{a 2D data zoo object is returned. Station names are in the column names
-  Station data is in columns where every month is a row. 
-
+\value{A V3 data.frame is returned. You feed the function a 14 column
+  data.frame, for example, the return value of \code{readV3Data} and
+  you supply a CAM criteria and the data.frame is culled and only those
+  stations that meet the criteria are returned. The format is still 14
+  columns of data. 
+ 
 }
  
 \author{Steven Mosher
  
 }
-
-
-
-\examples{
- \dontrun{ 
-   # read the data
-   mean <-readV3Data()
-   # create temperature series
-   temps <- createTemperature(mean) 
-   # create anomalies
-   anomaly <- anomalize(temps) 
-   # select stations which fit criteria
-   anomaly <-whichStationsCAM(anomaly) 
  
- }
 
+ 
+
+\seealso{\code{\link{passesCamZoo}}
+ 
+}
+\examples{
+  \dontrun{
+   v3data <- readV3Data(filename="yourfile")
+   v3data <- windowV3(v3data,start = 1900, end = 2010)
+   v3data <- passesCamV3(v3data)
+  }
+ 
 }
  
 \keyword{ TimeSeries }

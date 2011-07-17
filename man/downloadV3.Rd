@@ -6,19 +6,20 @@
 }
 \description{ The function downloads the datasets for the Global
   Historical Climate Network version 3, available on a public ftp.
-  The function downloads the tar.gz data sets and decompresses the
+  The function downloads the \code{tar.gz} data sets and decompresses the
   contents to a local directory.
  
 }
 \usage{
   downloadV3(url = V3.MEAN.ADJ.URL, directory = getwd(),
-             overwrite = FALSE, remove = FALSE)
+             overwrite = TRUE, remove = FALSE)
 }
  
 \arguments{
-  \item{url}{ The url is defaulted to download the "adjusted" V3 'Tave' data.
-  there are 6 different datasets that are updated on a near daily basis. Each
-  has a different URL. This package provides the url or each in stored
+  \item{url}{ The url is defaulted to download the "adjusted" V3 'Tave' 
+  or Tmean data. Tmean data is the data one normally works with.
+  There are 6 different datasets that are updated on a near daily basis. Each
+  has a different URL. This package provides the url to each in stored
   data. 
   \code{V3.MEAN.ADJ.URL},
   \code{V3.MEAN.RAW.URL},
@@ -26,18 +27,21 @@
   \code{V3.MAX.RAW.URL},
   \code{V3.MIN.ADJ.URL},
   \code{V3.MIN.RAW.URL}.
-  The should be loaded when the package loads. If not, \code{data()} will
-  load them.
+  These urls are loaded when the package loads. If not, \code{data()} will
+  load them. That does not mean the data behind the url is loaded, but rather
+  the url string is defined.
  
 }
   \item{directory}{The default directory is the working directory. After
   downloading the files are unpacked and stored under a dated directory.
   This directory will be written directly under the working directory or
   the directory provided by the user. If \code{directory} does not
-  exist it will be created
+  exist it will be created.
  
 }
-  \item{overwrite}{Overwrites the compressed files (tar or gz) 
+  \item{overwrite}{Overwrites the compressed files (tar or gz) This
+  is defaulted to \code{TRUE}. Since fresh files are posted every
+  day the default is to overwrite existing copies.
  
 }
   \item{remove}{Removes the compressed files after decompression
@@ -89,4 +93,5 @@
 }
  
 \keyword{ Download }
+
  

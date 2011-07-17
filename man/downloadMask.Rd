@@ -2,7 +2,7 @@
 \alias{downloadMask}
  
 \title{A function to download a land mask
- ~~
+  
 }
 \description{The function download a land mask data set from the
   provided URL and returns the local filename. The package provides
@@ -14,13 +14,16 @@
    
 }
 \usage{
-downloadMask(url = WATER.MASK.URL, directory = getwd())
+downloadMask(url = OCEAN.MASK.URL, directory = getwd())
 }
  
 \arguments{
-  \item{url}{The "water" land mask is the default. This url points
-  to a mask that has land and all water bodies. The other url
-  provided is an ocean/land mask.
+  \item{url}{The "ocean" land mask is the default. This url points
+  to a mask that has land and all ocean bodies. The other url
+  provided is an water/land mask. That mask is more appropriate
+  for checking whether stations are located in an inland body of water.
+  That is, for error checking locations. For processing a global
+  temperature, the ocean mask should be used. It is the default.
  
 }
   \item{directory}{by default the file is downloaded to the working directory
@@ -55,9 +58,7 @@ downloadMask(url = WATER.MASK.URL, directory = getwd())
   collection are in the ASCII, or text format. The file format 
   consists of numerical fields of varying length, 
   which are delimited by a single space and arranged in 
-  columns and rows. The values for the binary land/water or 
-  land/sea masks are written as the integers
-  0 and 1. All values in the land/water/sea fraction files 
+  columns and rows. .... All values in the land/water/sea fraction files 
   are written as integers from 0 to 100.
 
   The files at different spatial resolutions each contain the 
@@ -82,8 +83,9 @@ downloadMask(url = WATER.MASK.URL, directory = getwd())
 
  
 \examples{
- \dontrun{ water <- downloadmask(url=WATER.MASK.URL)}
+ \dontrun{ water <- downloadmask(url=OCEAN.MASK.URL)}
 }
  
-\keyword{ Download }
+ 
+\keyword{Download}
  

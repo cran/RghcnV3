@@ -5,9 +5,9 @@
  
 }
 \description{The data files and inventory files of GHCN V3
-  differ from previous version. Each dataset now has different
+  differ from previous versions. Each dataset now has different
   columns and different column descriptions. In order to
-  read in these datafiles certina variables such as column widths
+  read in these datafiles certian variables such as column widths
   and column names must be set. Those parameters are kept in
   a list that is loaded when the package loads.
  

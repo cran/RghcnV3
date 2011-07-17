@@ -13,26 +13,28 @@
  
 }
 \usage{
-  downloadSST(url = HADSST2.URL, directory = getwd(), 
-  overwrite = FALSE, remove = FALSE)
+downloadSST(url = HADSST2.URL, directory = getwd(), 
+            overwrite = FALSE, remove = FALSE)
 }
  
 \arguments{
-  \item{url}{the url is predefined according to its published location
+  \item{url}{The url is predefined according to its published location
   at the time of testing the package. 
  
 }
-  \item{directory}{the directory where the files will be downloaded to.
+  \item{directory}{The directory where the files will be downloaded to.
   This defaults as the working directory. If directory does not exist,
   it will be created.
  
 }
   \item{overwrite}{If overwrite is false and the file already exists
   an error will be thrown. To overwrite the file, set overwrite to
-  TRUE. 
+  TRUE. The download takes a while, so overwrite is set to false
+  by default. If you want to re download the data, then set the flag
+  to \code{TRUE}.
  
 }
-  \item{remove}{Remove the compressed file after deconpression
+  \item{remove}{Remove the compressed file after decompression
  
 }
 }
@@ -45,9 +47,7 @@
   file. This is a complete path.
 
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
+ 
 \author{Steven Mosher
  
 }

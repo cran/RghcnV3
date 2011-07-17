@@ -134,17 +134,17 @@
 	names <- gsub("#"," ",names,fixed=TRUE)
   names <- gsub("."," ",names,fixed=TRUE)
 	 
-	names <- R.oo::trim(names)
+	names <- raster::trim(names)
  return(names)
 
 }
 
-readInventory <- function(filename, Constants=FILE.PARAMETERS){
+readInventory <- function(filename, Constants = FILE.PARAMETERS){
   
        inventory<-       read.fwf(filename,
-                                  widths= Constants$InvWidths,
-                                  comment.char="",stringsAsFactors = FALSE,
-                                  col.names= Constants$InvNames)
+                                  widths = Constants$InvWidths,
+                                  comment.char = "", stringsAsFactors = FALSE,
+                                  col.names = Constants$InvNames)
                      
       inventory$Elevation       <- gsub("-999", NA , inventory$Elevation) 
       inventory$Population      <- gsub("-9", NA , inventory$Population) 
@@ -169,12 +169,12 @@ readInventory <- function(filename, Constants=FILE.PARAMETERS){
 readV3Data <- function(filename, Parameters = FILE.PARAMETERS){
   
     x <- read.fwf(filename,
-                   widths= Parameters$DataWidths,
-                   comment.char="",
-                   col.names= Parameters$DataNames,
+                   widths = Parameters$DataWidths,
+                   comment.char = "",
+                   col.names = Parameters$DataNames,
                    na.strings = -9999, stringsAsFactors = FALSE)
-    x <- x[, Parameters$DataColumns]
-    x[,3:14]<-x[,3:14]/100 
+    x <- x[ ,Parameters$DataColumns]
+    x[ ,3:14] <- x[ ,3:14]/100 
     return(x)
      
          
@@ -183,34 +183,38 @@ readV3Data <- function(filename, Parameters = FILE.PARAMETERS){
 readQC <- function(filename, Parameters = FILE.PARAMETERS  ){
   
     x <- read.fwf(filename,
-                   widths= Parameters$DataWidths,
-                   comment.char="",
-                   col.names= Parameters$DataNames,
+                   widths = Parameters$DataWidths,
+                   comment.char = "",
+                   col.names = Parameters$DataNames,
                    na.strings = " ", stringsAsFactors = FALSE)
      
      
-    qc <-x[, Parameters$QCFlags]
-    colnames(qc)<- c("Id","Year","Jan","Feb","Mar","Apr","May", 
+    qc <- x[ ,Parameters$QCFlags]
+    colnames(qc) <- c("Id","Year","Jan","Feb","Mar","Apr","May", 
                       "Jun","Jul","Aug","Sep","Oct","Nov","Dec")
     
-    dm <-x[, Parameters$DMFlags]
-    colnames(dm)<- c("Id","Year","Jan","Feb","Mar","Apr","May", 
+    dm <- x[ ,Parameters$DMFlags]
+    colnames(dm) <- c("Id","Year","Jan","Feb","Mar","Apr","May", 
                       "Jun","Jul","Aug","Sep","Oct","Nov","Dec")
-    ds <-x[, Parameters$DSFlags]
-    colnames(ds)<- c("Id","Year","Jan","Feb","Mar","Apr","May", 
+    ds <- x[ ,Parameters$DSFlags]
+    colnames(ds) <- c("Id","Year","Jan","Feb","Mar","Apr","May", 
                       "Jun","Jul","Aug","Sep","Oct","Nov","Dec")
     
-    return(list(QC=qc,DM=dm,DS=ds))
-    
-         
+    return(list(QC = qc, DM = dm, DS = ds))
+        
 }
 
-readMask<-function(filename){
+readMask <- function(filename){
     require("raster")  
-    land <- read.table(filename,sep=" ")
-    world <- raster(as.matrix(land),xmn=-180, xmx=180, ymn=-90, ymx=90,
-                  crs="+proj=longlat +datum=WGS84")     
+    land  <- read.table(filename, sep = " ")
+    world <- raster(as.matrix(land),xmn = -180, xmx = 180, ymn = -90, ymx = 90,
+                  crs = "+proj=longlat +datum=WGS84")     
     return(world/100) 
+}
+
+readMaskDeg1 <- function(){
+  f <- system.file("external/landmask1x1.grd", package = "RghcnV3")
+  return(raster(f))
 }
 
 readSST <- function(filename){
@@ -218,17 +222,52 @@ readSST <- function(filename){
    require("raster")
    require("zoo")
     
-   sea <- brick(x=filename,varname="sst")
-    
+   sea <- brick(x = filename, varname = "sst")
+   sea <- setZ(sea, as.yearmon(layerNames(sea)), name = 'time')
    layerNames(sea) <- as.yearmon(layerNames(sea))
    return(sea)   
    
 }
+
+readHadMaps  <- function(filename,start = 1850){
+    require("ncdf")
+    require("raster")
+    require("zoo")   
+   cru <- brick(x = filename, varname = "temp")
+   z  <- as.yearmon(start + seq(0 ,nlayers(cru) - 1)/12)
+   cru <- setZ(cru, z, name = "time")
+   layerNames(cru) <- as.yearmon(start + seq(0 ,nlayers(cru) - 1)/12) 
+ return(cru)      
+}
+   
+
+readHadResults <- function(url = c(HADSST2.RESULTS.URL, HADCRUT3.RESULTS.URL,
+                                   CRUTEMP3.RESULTS.URL)){
+    
+    require("zoo")
+    if (length(url) > 1){
+       cat("PASS one url ONLY", url,"\n")
+       warning(cat(" using the first element", url[1],"\n"))
+    }
+    HadCheck <- read.table(url[1], fill = TRUE)
+    records  <- length(HadCheck[, 1])
+    odds     <- records
+    evens    <- records
+    if (records %% 2 == 0) odds <- records - 1
+    if (records %% 2 == 1) evens <- records - 1
+    HadTemps   <- HadCheck[seq(1, odds, by = 2) ,]     
+    start <- HadCheck[1,1]
+    end   <- max(HadCheck[ ,1])     
+    ty <- (end + 1 ) - start    
+    HadMonthly <- c(t(HadTemps[ ,2:13]))
+     
+    tim <- as.yearmon(start + seq(0, (ty * 12) - 1)/12)   
+  return(zoo(HadMonthly, order.by = tim)) 
+   
+}
     
    
-  
-   
-  
+
   
  
              
