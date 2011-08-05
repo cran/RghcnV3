@@ -19,7 +19,7 @@
 \format{
   The format is:
   chr "http://www.drivehq.com/file/df.aspx/publish/
-  stevenmosher/land_percent2_qd.asc Publish/land_percent2_qd.asc"
+  stevenmosher/PublicFolder/land_percent2_qd.asc"
 }
 \details{"All of the files in the ISLSCP Initiative II data 
   collection are in the ASCII, or text format. The file format 

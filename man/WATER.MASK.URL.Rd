@@ -18,7 +18,8 @@
 \usage{WATER.MASK.URL}
 \format{
   The format is:
- chr "http://www.drivehq.com/file/df.aspx/publish/stevenmosher/land_percent_qd.asc Publish/land_percent_qd.asc"
+ chr "http://www.drivehq.com/file/df.aspx/publish/
+    stevenmosher/PublicFolder/land_percent_qd.asc"
 }
 \details{"All of the files in the ISLSCP Initiative II data 
   collection are in the ASCII, or text format. The file format 
