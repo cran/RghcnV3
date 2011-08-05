@@ -1,7 +1,7 @@
-\name{regionalAverage}
-\alias{regionalAverage}
+\name{referenceStation}
+\alias{referenceStation}
  
-\title{Determines a local or regional average temperature
+\title{Determines a reference station for local area
  
 }
 \description{This function is based on the Berkeley Method of calculating
@@ -12,8 +12,8 @@
   by the stations to calculate an average for the region. See the post
   referenced in the notes below for a detailed mathematical theory
 }
-\usage{
-regionalAverage(Data, offres = 0.001)
+\usage{referenceStation(Data, offres = 0.001)
+ 
 }
  
 \arguments{
@@ -29,7 +29,7 @@ regionalAverage(Data, offres = 0.001)
 }
 \details{The function should be called with a zoo series of temperature
   data or mts of temperature data. The function finds a set of "offsets"
-  that are used to estimate a mean temperature for the region. 
+  that are used to estimate a reference temperature for the region. 
   
  
 }
@@ -55,8 +55,8 @@ regionalAverage(Data, offres = 0.001)
 \author{Tamino; adapted by Steven Mosher
  
 }
-\note{url{http://www.berkeleyearth.org/Resources/Berkeley_Earth_Summary.pdf}
-   url{http://tamino.files.wordpress.com/2011/07/align.pdf}
+\note{\url{http://www.berkeleyearth.org/Resources/Berkeley_Earth_Summary.pdf},
+   \url{http://tamino.files.wordpress.com/2011/07/align.pdf}
 }
 
  
@@ -70,14 +70,16 @@ regionalAverage(Data, offres = 0.001)
   # intersect the two
   # call regional
   # plotthe answers
-  v3Mean <- readV3Data(filename='yourfile')
-  v3Inv  <- readInventory(filename = "invfilename")
+  TEXAS.DAT <- system.file("external/Texas.dat", package = "RghcnV3")
+  TEXAS.INV <- system.file("external/Texas.inv", package = "RghcnV3")
+  v3Mean <- readV3Data(TEXAS.DAT,output ="Mts")
+  v3Inv  <- readInventory(TEXAS.INV)
   e      <- extent(-100,-90,30,40)
   inv    <- cropInv(v3Inv,e)
-  v3late <- windowV3(v3Mean,start = 1950, end = 2010)
-  v3Temp <- v3ToZoo(v3late)
-  Data   <- intersectInvZoo(inv,v3Temp)
-  REGION <- regionalAverage(Data=Data$Zoo)
+  v3late <- window(v3Mean,start = 1950, end = 2010 +11/12)
+   
+  Data   <- intersectInvData(inv,v3late)
+  REGION <- referenceStation(Data=Data$Zoo)
   plot(REGION$Zoo$data)
 
 }
@@ -85,4 +87,5 @@ regionalAverage(Data, offres = 0.001)
 }
  
 \keyword{ TimeSeries }
-\keyword{ Contributed } 
+\keyword{ Contributed }
+\keyword{ Regression}

@@ -15,18 +15,14 @@
  
 }
 \usage{
-anomalize(TemperatureZoo, period = list(Start = 1961, End = 1990))
+anomalize(Data, period = list(Start = 1961, End = 1990))
 }
  
 \arguments{
-  \item{TemperatureZoo}{The function \code{anomalize} must be supplied
-  with a "zoo" series of actual temperatures. A "zoo" series contains
-  the entire time series of data for a station including NAs for the 
-  missing data. With this package a "zoo" series of temperatures is
-  created using the function \code{v3ToZoo)}. As a function
-  \code{anomalize()} does NOT take data directly from 
-  \code{readV3Data()}. That data must first be reformated to a "zoo" type
-  data structure. 
+  \item{Data}{The function \code{anomalize} must be supplied
+  with a "zoo" series, "mts" series or "Array" of actual temperatures. 
+  The series contains the entire time series of data for a station including 
+  NAs for the missing data.  
  
 }
   \item{period}{period is a list of two elements \code{Start} and
@@ -43,34 +39,33 @@ anomalize(TemperatureZoo, period = list(Start = 1961, End = 1990))
 \details{There are two ways to create anomalies. The more direct path
   relies on the \code{createAnomaly()} function. That function does
   take input directly in the format delivered from \code{readV3Data()}.
-  There, a 14 column \code{data.frame} is fed to the function. That
-  function takes care of all the processing to turn the data into 
+   That function takes care of all the processing to turn the data into 
   anomalies and to return only those stations which satisfy the CAM 
   criteria, for example, 15 Years of data in the CAM base period. That
   function effectively wraps several other function, namely:
-  \code{v3ToZoo();anomalize();passesCamZoo()}.
+  \code{anomalize();passesCam)}.
   The second method of creating anomalies is to first 
-  \code{readV3Data()} then transform that output into temperature series
-  by using \code{v3ToZoo()}. This gives you a data series where
-  you could plot actual temperatures if you wanted to. Then that
-  Temperature series would be fed to  \code{anomalize()}. Anomalies
-  could then be plotted for each station. 
+  \code{readV3Data()} then  Then that Temperature series would be 
+  fed to \code{anomalize()}. Anomalies could then be plotted for each station. 
   The final step would be to take the result of
-  \code{anomalize()} and the apply the CAM 
-  (Common Anomaly Method) criteria to select the subset of stations
-  which satify the criteria for inclusion in data analysis. This
-  is performed by the function \code{passescamZoo()}. 
+  \code{anomalize()} and the apply the CAM (Common Anomaly Method) criteria to
+  select the subset of stations which satify the criteria for inclusion in
+  data analysis. This is performed by the function \code{passesCam}. Or,
+  One can execute \code{passesCam} first and then run \code{anomalize}
  
 }
-\value{The function returns a zoo series of station anomalies. The
-  data structure puts stations in columns and anomaly data in rows. The
+\value{The function returns a   series of station anomalies. For zoo and mts data
+   The data structure puts stations in columns and anomaly data in rows. The
   GHCN station Ids are used as column names. Every row of data is
   a month of anomaly data. You can think of the structure as a collection
   of time series in columns. Every column is a time series of station
-  data.
+  data. For the Array data struture, the first dimension is stations, the
+  second dimension is months and the 3rd dimenion is years. Empty stations,
+  or stations with all NA values are removed. This happens if the anomaly
+  period is empty.
 
 }
-\seealso{ \code{\link{passesCamZoo}, \link{readV3Data},\link{v3ToZoo}
+\seealso{ \code{\link{passesCam}, \link{readV3Data}, 
    \link{createAnomaly}} }
 
 \author{Steven Mosher
@@ -78,10 +73,10 @@ anomalize(TemperatureZoo, period = list(Start = 1961, End = 1990))
 }
  
 \examples{
-\dontrun{df  <- readV3Data(filename = "myfile.dat")
-  TempSeries <- v3ToZoo(df)
+\dontrun{df  <- readV3Data(filename = "myfile.dat",output = "Zoo")
+   
   Anomalies  <- anomalize(TempSeries)
-  Anomalies  <- whichStationsCAM(Anomalies)
+  Anomalies  <- passesCam(Anomalies)
 }
  
 }

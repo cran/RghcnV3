@@ -1,22 +1,21 @@
-\name{windowV3}
-\alias{windowV3}
+\name{windowArray}
+\alias{windowArray}
  
-\title{A function to subset V3 Data by year
+\title{A function to subset Array Data by year
  
 }
 \description{After reading in V3 data using \code{readV3Data}
   the dataset can be reduced in size by selecting a subset
-  or \code{window.V3} of data. This operates exactly like
+  or \code{windowArray} of data. This operates exactly like
   the \code{window} function in \code{zoo} or time series
   window functions.
  
 }
-\usage{
-windowV3(v3Data, start, end)
+\usage{windowArray(Data, start, end)
 }
  
 \arguments{
-  \item{v3Data}{A 14 column data.frame of V3 Temperature data
+  \item{Data}{A 3D data array
  
 }
   \item{start}{The start year you want to include. Only integer
@@ -28,11 +27,11 @@ windowV3(v3Data, start, end)
  
 }
 }
-\details{The function only takes a dataframe. It must have a 
-  column named \code{$Year}
+\details{The function only takes an Array. It must have a 
+  diemnsion with year data as dimnames
  
 }
-\value{Returns a V3 data.frame will Years outside the window
+\value{Returns an Array with Years outside the window
   removed
  
 }
@@ -46,9 +45,9 @@ windowV3(v3Data, start, end)
 \examples{
 \dontrun{
   meanAdj     <- downloadV3(url=V3.MEAN.ADJ.URL) 
-  meanAdata   <- readV3Data(filename=meanAdj$DataFilename)
+  meanAdata   <- readV3Data(filename=meanAdj$DataFilename,output ="Array")
   Inventory   <- readInventory(filename=meanAdj$InventoryFile)
-  mean1900    <- windowV3(meanAdata,start=1900,end=2010)
+  mean1900    <- windowArray(meanAdata,start=1900,end=2010)
 }
  
 }

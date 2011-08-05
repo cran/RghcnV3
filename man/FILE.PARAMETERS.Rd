@@ -19,6 +19,8 @@ List of 9\cr
  $ InvWidths  : num [1:16] 11 9 10 7 31 5 1 5 2 2 ...\cr
  $ InvNames   : chr [1:16] "Id" "Lat" "Lon" "Elevation" ...\cr
  $ DataWidths : num [1:51] 11 4 4 5 1 1 1 5 1 1 ...\cr
+ $ DataOnly   : num [1:51] 11 4 -4 5 -1 -1 -1 5 -1 -1 ...\cr
+ $ QcOnly     : num [1:51] 11 4 -4 -5 1 1 1 -5 1 1 ...\cr
  $ DataNames  : chr [1:51] "Id" "Year" "Element" "Jan" ...\cr
  $ DataColumns: chr [1:14] "Id" "Year" "Jan" "Feb" ...\cr
  $ QCColumns  : chr [1:38] "Id" "Year" "DMF1" "DMF2" ...\cr

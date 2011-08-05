@@ -12,3 +12,4 @@ CRUTEMP3.RESULTS.URL   <- "http://www.cru.uea.ac.uk/cru/data/temperature/crutem3
 HADCRUT3.RESULTS.URL   <- "http://www.cru.uea.ac.uk/cru/data/temperature/hadcrut3gl.txt"
 CRUTEMP3.MAPS.URL      <- "http://hadobs.metoffice.com/crutem3/data/CRUTEM3.nc" 
 HADCRUT3.MAPS.URL      <- "http://hadobs.metoffice.com/hadcrut3/data/HadCRUT3.nc"
+CRU.STATIONS.URL <- "http://www.cru.uea.ac.uk/cru/data/temperature/station-data/station-data.zip"

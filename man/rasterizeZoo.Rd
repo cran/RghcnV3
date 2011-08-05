@@ -19,15 +19,12 @@ rasterizeZoo(inventory, Zoo, land = GLOBE5)
 }
  
 \arguments{
-  \item{inventory}{An inventory data.frame produced by the
-  function \code{intersectInvZoo}. If the stations
+  \item{inventory}{An inventory data.frame. If the stations
   in the inventory do not match those in the zoo series, 
   an error is thrown.
  
 }
-  \item{Zoo}{a zoo object of data produced by the
-  function \code{intersectInvZoo}, or by
-  the function \code{\link{v3ToZoo}}
+  \item{Zoo}{a zoo object of data.
   If the stations in the zoo object do not match those in the inventory 
   an error is thrown. Inputs are not limited to anomalies.
   Temperature zoo objects can also be fed to the function.
@@ -74,7 +71,7 @@ rasterizeZoo(inventory, Zoo, land = GLOBE5)
  
 \examples{
 \dontrun{
- Data <- intersectInvZoo(inventory,anomalies)
+ Data <- intersectInvData(inventory,anomalies)
  Land <- rasterizeZoo(Data$Inventory,Data$Zoo)
  Amonth  <-raster(Land,layer=1000)
  plot(Amonth)

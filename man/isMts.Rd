@@ -8,8 +8,7 @@
   series class. 
  
 }
-\usage{
-isMts(data)
+\usage{isMts(data)
 }
  
 \arguments{

@@ -46,14 +46,14 @@ endYear   <- 2010
 ###########################################
  
 #####################################################
-v3Mean    <- readV3Data(filename = V3DATA)
+v3Mean    <- readV3Data(filename = V3DATA,output = "Zoo")
 v3Inv     <- readInventory(filename = V3INV)
-v3Mean    <- windowV3(v3Mean, start = startYear, end = endYear)
+v3Mean    <- window(v3Mean, start = startYear, end = endYear + 11/12)
 Aprt      <- v3Inv[which(v3Inv$Airport == TRUE), ]
 notAprt   <- v3Inv[which(v3Inv$Airport == FALSE), ]
 anomaly   <- createAnomaly(v3Mean)
-APRT      <- intersectInvZoo(Aprt, anomaly)
-NAPRT     <- intersectInvZoo(notAprt, anomaly)
+APRT      <- intersectInvData(Aprt, anomaly)
+NAPRT     <- intersectInvData(notAprt, anomaly)
 ################################################
 ##########  Now rasterize the two data sets
 aprtRaster    <- rasterizeZoo(APRT$Inventory, APRT$Zoo, GLOBE5)

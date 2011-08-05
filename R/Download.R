@@ -59,3 +59,14 @@ downloadHadMaps <- function(url = c(CRUTEMP3.MAPS.URL, HADCRUT3.MAPS.URL), direc
   download.file(url[1], dest, mode = "wb")   
   return(dest) 
 }
+
+downloadCRU <- function(url = CRU.STATIONS.URL,directory = getwd()){
+  if (!file.exists(directory)) dir.create(directory)
+  fullDestination <- file.path(directory, basename(url), fsep = .Platform$file.sep)
+  fullDestination <- file.path(directory, basename(url), fsep = .Platform$file.sep)
+  download.file(url, destfile = fullDestination, mode = "wb")
+  unzip(fullDestination)
+  fullDestination <- sub(".zip",".txt",fullDestination)
+return(fullDestination)
+  
+}

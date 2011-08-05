@@ -8,8 +8,9 @@ getStations <- function(data){
   if (isMts(data)){
     return(as.numeric(colnames(data)))
   }
-  if (isV3(data)){
-    return(unique(as.numeric(data$Id)))
+  if (isArray(data)){
+    stations <- unlist(dimnames(data)[1])
+    return(unique(as.numeric(stations)))
   }
   warning(" data type not supported. Returning NULL")
   return(NULL) 

@@ -1,4 +1,4 @@
-regionalAverage = function(Data, offres = .001){
+referenceStation = function(Data, offres = .001){
   
   # orginal author Tamino.
    # http://tamino.wordpress.com

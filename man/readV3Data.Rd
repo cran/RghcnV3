@@ -13,13 +13,19 @@
   by the function \code{readQC()}
   Missing values are recoded from -9999 to NA.
 }
-\usage{
-readV3Data(filename, Parameters = FILE.PARAMETERS)
+\usage{readV3Data(filename, output = c("Array", "Mts", "Zoo"), Parameters = FILE.PARAMETERS)
+ 
 }
  
 \arguments{
   \item{filename}{The filename is the local filename of the GHCN V3
   data. This file ends with the extension \code{.dat}
+ 
+}
+\item{output}{output selects the one type of data you want returned.
+ If you specify more than one type, it will default to the first type.
+ \code{output ="Zoo"} will return a zoo object and likewise for the other
+ settings. Default is Array
  
 }
   \item{Parameters}{Parameters defaults to the variables set
@@ -39,17 +45,10 @@ readV3Data(filename, Parameters = FILE.PARAMETERS)
   name of the file, so it's redudant
  
 }
-\value{The function will a \code{data.frame} consisting of an
-  Id, followed by a Year, followed by 12 columns of monthly data. 
-  This is standard Version 2 data format. The format is dense and
-  if a station has missing years they are not represented as Missing.
-  The whole year is removed. It is vitally important to remember this.
-  For a station that has 50 years of data, it will occupy 50 lines in
-  the \code{data.frame}. Those 50 years  very often have gaps. In 
-  order to turn this packed format into a full time series the missing
-  years must be infilled with NA values. That process happens in
-  two different functions: \code{createAnomaly} and \code{createTemperature}
-  the format of the file is documented 
+\value{The function will return  on of three types of data structures.
+  in versions of RghcnV3 prior to 2.0 a 14 column format was returned
+  That has been replaced with the Array format
+  the format of the source data file is documented 
   at \url{ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/v3/README}. Essentially,
   every month column is followed by 3 columns of QA and source flags.
   After processing by \code{readV3Data()} the QC Flags are removed.
@@ -59,14 +58,16 @@ readV3Data(filename, Parameters = FILE.PARAMETERS)
 \references{
   \url{ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/v3/README}
 }
-\author{ Steven Mosher
+\author{ Steven Mosher; modified for speed by Nick Stokes
  
 }
  
  
  
 \examples{
- \dontrun{V3Mean <- readData(filename="ghcnm.tavg.v3.0.0.20110616.qca")}
+ \dontrun{
+ TEXAS.DAT <- system.file("external/Texas.dat", package = "RghcnV3")
+ texas <- readV3Data(TEXAS.DAT, output = "Zoo")}
 }
  
 \keyword{ file }

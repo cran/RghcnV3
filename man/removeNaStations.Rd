@@ -4,8 +4,8 @@
 \title{A function to remove stations that have no temperatures
  
 }
-\description{During the course of processing zoo objects and Mts objects
-  it is possible to create stations that have only NAs in their data
+\description{During the course of processing zoo objects,Mts objects
+  and Arrays it is possible to create stations that have only NAs in their data
   fields. This can cause problems for code that take a mean of the data.
   a mean of NAs is not NA, but rather is Nan. This function then
   is used internally by other functions to ensure that such stations
@@ -17,21 +17,21 @@
   from a zoo object. 
  
 }
-\usage{
-removeNaStations(Data)
+\usage{removeNaStations(Data)
 }
  
 \arguments{
-  \item{Data}{A zoo series object or mts object
+  \item{Data}{A zoo series object or mts object or Array
  
 }
 }
 \details{The collection of zoo series or ts() series are examined
-  and if a station ( column) is all NA, then that column is removed
+  and if a station ( column) is all NA, then that column is removed.
+  Similar processing occurs for Array type objects.
   
  
 }
-\value{returns a zoo series or mts with the empty stations removed
+\value{returns a zoo series,mts series or Array with the empty stations removed
  
 }
  

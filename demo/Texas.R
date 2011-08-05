@@ -1,5 +1,5 @@
 ##########################################################
-#  test of regional temperature estimation
+#  test of Tamino's reference station method'
 #  Steven Mosher
 #
 #
@@ -47,15 +47,16 @@ endYear   <- 2010
 ###########################################
  
 #####################################################
-v3Mean    <- readV3Data(filename = V3DATA)
+v3Mean    <- readV3Data(filename = V3DATA, output ="Zoo")
 v3Inv     <- readInventory(filename = V3INV)
-v3Mean    <- windowV3(v3Mean, start = startYear, end = endYear)
+v3Mean    <- window(v3Mean, start = startYear, end = endYear +(11/12))
+v3Mean    <- removeNaStations(v3Mean)
 texas     <- extent(-105,-95,25,35)
 texasInv  <- cropInv(v3Inv,texas)
-Temp      <- v3ToZoo(v3Mean)
-Temp      <- removeNaStations(Temp)
-DATA      <- intersectInvZoo(texasInv,Temp)
-regionAve <- regionalAverage(DATA$Zoo)
+ 
+
+DATA      <- intersectInvData(texasInv,v3Mean)
+regionAve <- referenceStation(DATA$Zoo)
 plot(regionAve$Zoo[,1], main = "Texas Heat", xlab = "date", col ="red", lwd =2)
 plot(regionAve$Zoo$stations, main = "Stations", xlab = "date", col ="red", lwd =1)
 plot(regionAve$Zoo$se, main = "Standard Error", xlab = "date", col ="red", lwd =1)

@@ -7,21 +7,18 @@
   data. The function screens stations to include only those
   stations with the required number of years in the base period. The 
   temperatures for these stations are transformed into anomalies. 
-  To facilitate this transformation the temperatures are first cast 
-  as a "zoo"  series which fills in any gaps the time series has 
-  from missing years.  
+     
  
 }
-\usage{
-  createAnomaly(V3data, criteria = list(Start = 1961, End = 1990, 
-  Years = 15, Threshold = 12))
+\usage{createAnomaly(Data, criteria = list(Start = 1961, End = 1990, 
+                     Years = 15, Threshold = 12))
+   
 }
  
 \arguments{
-  \item{V3data}{ V3data must be a 14 column data.frame as output by
+  \item{Data}{ data must be an "Array","Zoo", or "Mts" object as output by
   \code{readV3Data}. If the data is not in that format, the function
-  will fail. The 14 columns are Id, Year, followed by 12 months
-  of temperature data.
+  will fail.  
  
 }
   \item{criteria}{ criteria is a list with 4 elements named  Start,
@@ -34,12 +31,12 @@
  
 }
 }
-\details{The function takes the V3 temperature data and transforms it into
-   a regular, gap free, zoo time series and calculates the average temperature 
-   for each station for each month in the base period. This base period 
-   monthly mean is then subtracted from the entire time series. The net effect
-  is the entire database is transformed into a collection of time series
-  where the monthly mean temperature from 1961 to 1990 has been subtracted
+\details{The function takes the   temperature data and  calculates the 
+   average  temperature for each station for each month in the base period. 
+   This base  period monthly mean is then subtracted from the entire time 
+   series. The net effect is the entire database is transformed into a 
+   collection of time series where the monthly mean temperature from 
+   1961 to 1990 has been subtracted
   from every measure. Thus, the anomaly for every month is the departure
   from the norm for that station,where the norm is defined as the average 
   during the base period. To be included in the analysis a station's record
@@ -52,23 +49,20 @@
   parameter has.
  
 }
-\value{The resultant zoo series data.frame is a collection anomalies for every
-  station during its entire period. The data.frame is organized
+\value{The resultant series is a collection anomalies for every
+  station during its entire period. outpute is organized
   by stations id in the columns and time in the rows. So that column
   one contains the time series for station 1, and so forth. Missing
   years and months are already infilled with NA so that the result is suitable
-  for plotting. A zoo series is similar to a time series and can
-  be operated on commands like \code{window}. 
+  for plotting. Array type objects have their data dimensions preserved
+  and stations are reurned in the first dimension.
  
 }
  
 \author{Steven Mosher
  
 }
-\note{A special note of thanks to Gabor Grothendieck maintainer of zoo for help
-  with the underlying algorithm.
  
-}
 
  
 \examples{
@@ -79,5 +73,5 @@
 }
  
 \keyword{ TimeSeries }
-\keyword{ Zoo }
+ 
  

@@ -9,8 +9,7 @@
   Start must be less than End. 
  
 }
-\usage{
-checkCriteria(criteria)
+\usage{checkCriteria(criteria)
 }
  
 \arguments{

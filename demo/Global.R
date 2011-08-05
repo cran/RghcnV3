@@ -68,11 +68,11 @@ dl        <- which(layerNames(SST) == as.character(startYear))
 SST       <- dropLayer(SST, 1:(dl - 1))
 SST       <- dropLayer(SST, (totalMonths +1 ):nlayers(SST))
 #####################################################
-v3Mean    <- readV3Data(filename = V3DATA)
+v3Mean    <- readV3Data(filename = V3DATA,output = "Zoo")
 v3Inv     <- readInventory(filename = V3INV)
-v3Mean    <- windowV3(v3Mean, start = startYear, end = endYear)
+v3Mean    <- window(v3Mean, start = startYear, end = endYear + (11/12))
 anomaly   <- createAnomaly(v3Mean)
-DATA      <- intersectInvZoo(v3Inv,anomaly)
+DATA      <- intersectInvData(v3Inv,anomaly)
 ################################################
   
 # Land and Sea data is all in place

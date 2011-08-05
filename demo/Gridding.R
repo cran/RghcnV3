@@ -19,23 +19,23 @@ demoFiles <- getDemoFiles()
 if (is.null(demoFiles$Data)){
     # if the data file is missing download it
     meanAdj     <- downloadV3(url = V3.MEAN.ADJ.URL)    
-    meanAdata   <- readV3Data(filename=meanAdj$DataFilename)
+    v3Mean      <- readV3Data(filename=meanAdj$DataFilename,output="Zoo")
     Inventory    <- readInventory(filename=meanAdj$InventoryFile)
 } else {
     # the files are there just use them    
-    meanAdata   <- readV3Data(filename = demoFiles$Data)
+    v3Mean     <- readV3Data(filename = demoFiles$Data,output = "Zoo")
     Inventory    <- readInventory(filename = demoFiles$Inv)
 }
 }
 startYear <- 1900
 endYear   <- 2010
 
-meanAdata   <- windowV3(meanAdata, start = startYear, end = endYear)
+v3Mean   <- window(v3Mean, start = startYear, end = endYear +(11/12))
 ########################################################################
 # Create Anomalies for the default period 1961-1990, 15 years 12 months
 ########################################################################
-Anomaly     <- createAnomaly(meanAdata)
-DATA        <- intersectInvZoo(Inventory, Anomaly)
+Anomaly     <- createAnomaly(v3Mean)
+DATA        <- intersectInvData(Inventory, Anomaly)
 #  create a raster to accept the points
 Land        <- rasterizeZoo(DATA$Inventory, DATA$Zoo, GLOBE5)
 ## Land contains anomalies that have been gridded.

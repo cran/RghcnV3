@@ -1,5 +1,5 @@
 isInventory <- function (inv){
-    if (isV3(inv)){
+    if (isArray(inv)){
       return(FALSE)
     } else {
       if (!is.data.frame(inv)) return(FALSE)

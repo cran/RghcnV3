@@ -1,5 +1,5 @@
-\name{passesCamV3}
-\alias{passesCamV3}
+\name{passesCam}
+\alias{passesCam}
  
 \title{A function for picking stations that meet CAM criteria
  
@@ -21,12 +21,12 @@
  
  
 }
-\usage{passesCamV3(Tdata, criteria = list(Start = 1961, End = 1990, 
+\usage{passesCam(Data, criteria = list(Start = 1961, End = 1990, 
                    Years = 15, Threshold = 12))
 }
  
 \arguments{
-  \item{Tdata}{Tdata is a data.frame in v3 format. 14 columns 
+  \item{Data}{Data is an Array, Mts object or Zoo object 
  
 }
   \item{criteria}{A list of criteria to meet the CAM requirements
@@ -42,11 +42,11 @@
   that pass the criteria are returned.
  
 }
-\value{A V3 data.frame is returned. You feed the function a 14 column
-  data.frame, for example, the return value of \code{readV3Data} and
-  you supply a CAM criteria and the data.frame is culled and only those
-  stations that meet the criteria are returned. The format is still 14
-  columns of data. 
+\value{A data structure matching the call is returned. You feed the function an Array, 
+  for example, and you supply a CAM criteria and the data  is culled and only those
+  stations that meet the criteria are returned. The format returned for th data
+  matches the structure of the calling data. If you pass in a zoo, you get a zoo out.
+   
  
 }
  
@@ -54,17 +54,11 @@
  
 }
  
-
- 
-
-\seealso{\code{\link{passesCamZoo}}
- 
-}
 \examples{
   \dontrun{
-   v3data <- readV3Data(filename="yourfile")
-   v3data <- windowV3(v3data,start = 1900, end = 2010)
-   v3data <- passesCamV3(v3data)
+   v3data <- readV3Data(filename="yourfile",output ="Array")
+   v3data <- windowArray(v3data,start = 1900, end = 2010)
+   v3data <- passesCam(v3data)
   }
  
 }

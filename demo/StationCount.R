@@ -16,10 +16,10 @@ demoFiles <- getDemoFiles()
 if (is.null(demoFiles$Data)){
     # if the data file is missing download it
     meanAdj     <- downloadV3(url = V3.MEAN.ADJ.URL)    
-    meanAdata   <- readV3Data(filename=meanAdj$DataFilename)
+    v3Mean   <- readV3Data(filename = meanAdj$DataFilename,output="Zoo")
 } else {
     # the files are there just use them    
-    meanAdata   <- readV3Data(filename=demoFiles$Data)
+    v3Mean   <- readV3Data(filename = demoFiles$Data,output="Zoo")
 }
 }
 
@@ -41,16 +41,16 @@ stationCount <- function( zoodata){
 
 
 
- Temps  <- v3ToZoo(meanAdata)
- Anomaly <- createAnomaly(meanAdata)
+  
+ Anomaly <- createAnomaly(v3Mean)
  newCriteria <- list(Start = 1961, End = 1990, Years = 30, Threshold = 12)
- Anomaly2 <- createAnomaly(meanAdata, criteria = newCriteria)
+ Anomaly2 <- createAnomaly(v3Mean, criteria = newCriteria)
  newCriteria <- list(Start = 1961, End = 1990, Years = 20, Threshold = 10)
- Anomaly3 <- createAnomaly(meanAdata, criteria = newCriteria)
+ Anomaly3 <- createAnomaly(v3Mean, criteria = newCriteria)
  newCriteria <- list(Start = 1961, End = 1990, Years = 25, Threshold = 12)
- Anomaly4 <- createAnomaly(meanAdata, criteria = newCriteria)
+ Anomaly4 <- createAnomaly(v3Mean, criteria = newCriteria)
    
-tcount <- stationCount(Temps)
+tcount <- stationCount(v3Mean)
 acount <- stationCount(Anomaly)
 a2count<- stationCount(Anomaly2)
 a3count<- stationCount(Anomaly3)

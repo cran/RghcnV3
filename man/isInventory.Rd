@@ -10,8 +10,7 @@
   
  
 }
-\usage{
-isInventory(inv)
+\usage{isInventory(inv)
 }
  
 \arguments{

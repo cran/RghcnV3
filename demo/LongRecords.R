@@ -16,10 +16,10 @@ demoFiles <- getDemoFiles()
 if (is.null(demoFiles$Data)){
     # if the data file is missing download it
     meanAdj     <- downloadV3(url = V3.MEAN.ADJ.URL)    
-    meanAdata   <- readV3Data(filename=meanAdj$DataFilename)
+    v3Mean   <- readV3Data(filename=meanAdj$DataFilename,output="Zoo")
 } else {
     # the files are there just use them    
-    meanAdata   <- readV3Data(filename=demoFiles$Data)
+    v3Mean   <- readV3Data(filename=demoFiles$Data,output = "Zoo")
 }
 }
 
@@ -27,10 +27,10 @@ if (is.null(demoFiles$Data)){
 ########################################################################
 # Create Anomalies for the default period 1961-1990, 15 years 12 months
 ########################################################################
-meanAnomaly <- createAnomaly(meanAdata)
+ Anomaly <- createAnomaly(v3Mean)
 ############ window the data to period  after 1900
 ##  NOTE that times are in fractional months  
-Anomaly1900 <- window(meanAnomaly, start = 1900, end = 2010.99)
+Anomaly1900 <- window( Anomaly, start = 1900, end = 2010 + (11/12))
 ##  Count the months where you have temperature
 stationMonths <- colSums(!is.na(Anomaly1900))
 ##  create and apply a True false mask to the columns

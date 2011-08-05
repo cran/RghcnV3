@@ -1,25 +1,26 @@
 \name{annualize}
 \alias{annualize}
-
+ 
 \title{a function to create an annual mean from monthly data
  
 }
-\description{The zoo series data used in RGhcnV3 has a monthly frequency.
-  Creating yearly means from this is straightforward, but requires some
-  understanding of the zoo package. This function wraps the zoo functionality
-  and also provides hooks for some customization.
- 
+\description{The  data used in RGhcnV3 has a monthly frequency.
+  Creating yearly means from this is straightforward. However, the
+  package supports three types of data structures, an Array, a zoo
+  object and an mts object. This function takes any one of those
+  objects and creates an annula series from it
 }
-\usage{
-annualize(zooMonthly, user.fun = NULL, na.rm = TRUE, ...)
+\usage{annualize(Data, user.fun = NULL, na.rm = TRUE, ...)
 }
  
 \arguments{
-  \item{zooMonthly}{A monthly series of data. It can be temperatures
-  or anomalies. A check for the frequency of data is made.
+  \item{Data}{A monthly series of data. It can be temperatures
+  or anomalies. A check for the frequency of data is made. The data
+  object can be any type of mts, zoo or Array. Internally, the
+  function manages the change of object types.
  
 }
-  \item{user.fun}{ The \code{user.fun} defaults to NULL. This variable
+  \item{user.fun}{The \code{user.fun} defaults to NULL. This variable
   is provided if the user wants to create their own "NA" handlers.
   A "NA" handler is a function that describes how to calculate a
   yearly mean in the presence of "NAs". It can, for example, give
@@ -37,9 +38,9 @@ annualize(zooMonthly, user.fun = NULL, na.rm = TRUE, ...)
   will only be calculated if ALL 12 months are present. If a user
   function is provided, \code{na.rm} must be set to NULL. 
  
+ 
 }
   \item{\dots}{ for passing parameters to the user defined function.
-  
  
 }
 }
@@ -58,28 +59,29 @@ annualize(zooMonthly, user.fun = NULL, na.rm = TRUE, ...)
   writing a user defined function and passing its handle to \code{user.fun}
   The user defined function describes how to calculate a mean and can
   take parameters which are passed through the \code{,...}
+ 
 }
-\value{ Returns a zoo series of annual averages either by taking a
+\value{Returns a zoo series of annual averages either by taking a
   simple mean or by using the user defined function for taking
-  a mean. This function takes a zoo object in and returns a zoo
-  object. 
+  a mean. If a time series or mts object is passed in, one will be passed
+  out
  
 }
  
 \author{Steven Mosher
  
 }
-\note{Thanks to Peter O'Neill for the suggestion 
+\note{Thanks to Peter O'Neill for the suggestion
  
 }
 
  
 
-\seealso{\code{\link{keepIf}} 
+\seealso{\code{\link{keepIf}}
  
 }
 \examples{
-\dontrun{
+ \dontrun{
   annual <- annualize(Anomalies)
   # get the averages but only if all 12 months have data
   annual2 <- annualize(Anomalies, na.rm = FALSE)
@@ -88,10 +90,7 @@ annualize(zooMonthly, user.fun = NULL, na.rm = TRUE, ...)
   # are 10 or months of data in a year
   annual3 <- annualize(Anomalies,user.fun = keepIf, na.rm =NULL, cnt =10)
 }
- 
 }
  
- 
 \keyword{ TimeSeries }
-\keyword{Zoo}
- 
+\keyword{ Zoo } 

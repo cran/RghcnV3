@@ -1,4 +1,4 @@
-
+ 
 
 
 .cleanInvNames    <- function(names){
@@ -166,19 +166,9 @@ readInventory <- function(filename, Constants = FILE.PARAMETERS){
   
 }
 
-readV3Data <- function(filename, Parameters = FILE.PARAMETERS){
-  
-    x <- read.fwf(filename,
-                   widths = Parameters$DataWidths,
-                   comment.char = "",
-                   col.names = Parameters$DataNames,
-                   na.strings = -9999, stringsAsFactors = FALSE)
-    x <- x[ ,Parameters$DataColumns]
-    x[ ,3:14] <- x[ ,3:14]/100 
-    return(x)
-     
-         
-}
+
+
+ 
 
 readQC <- function(filename, Parameters = FILE.PARAMETERS  ){
   

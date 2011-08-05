@@ -61,7 +61,7 @@ plot(Cuba,main = "Cuba")
 map("world", add = TRUE)
 
 cubaValues <- values(Cuba)
-print(cubaValues)
+ 
 
 #############  make and save a 3 degree and 5 degree binary mask
 

@@ -5,7 +5,9 @@ Gridding        Anomalies are rasterized into a grid.
 Land            Creates land maps of anomalies.
 LongRecords     Creates Unweighted Average of 100 year stations.
 MaskCreate      Downloads Masks, Creates and saves new masks.
+ObjTest         Test various Objects.
+Roman           A Test of RomanM's Method.
 SST             Creates a time series of SST.
 SSTmaps         Creates Annual maps from Monthly maps.
 StationCount    Downloads Temperature and creates Station Count.
-Texas           Regional Temperature Analysis.
+Texas           Reference Station Analysis.

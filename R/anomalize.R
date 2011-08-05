@@ -1,20 +1,36 @@
-
-anomalize  <- function(TemperatureZoo, period = list(Start = 1961, End = 1990) ){ 
-       if (!is.zoo(TemperatureZoo)){
-       if (isV3(TemperatureZoo)) print("use v3ToZoo to create a zoo object")
-        stop ("TemperatureZoo must be a zoo object" ) 
-       } 
-       a <- window(TemperatureZoo, start = period$Start, end = period$End + (11/12))
-        
-       monthly.mean <- aggregate(a , cycle(a), FUN = mean, na.rm = TRUE)
-        
-       if (is.null(ncol(TemperatureZoo))){
-         out <- TemperatureZoo - coredata(monthly.mean)
-       } else {
+anomalize <- function(Data, period = list(Start = 1961, End = 1990)){
+  
+  if (period$Start >= period$End) stop("start must be less than end")
+  
+  if( is.ts(Data) | is.zoo(Data) | isArray(Data)){
+    swapOut = is.ts(Data)
+    if (swapOut) Data <- asZoo(Data)
+    if (isArray(Data)){
           
-         out <- TemperatureZoo - coredata(monthly.mean)[coredata(cycle(TemperatureZoo)), ]
-       }
-       Zout <- zoo(coredata(out),order.by = time(TemperatureZoo))
-       Zout <- removeNaStations(Zout)
-  return(Zout)
+          basePeriod <- windowArray(Data, start = period$Start, end =period$End)
+          u <-   t(apply(basePeriod, MARGIN = 1, FUN = rowMeans, na.rm = TRUE))            
+          out <- sweep(Data,c(1,2),u,FUN = "-")
+          dimnames(out) <- dimnames(Data)
+          
+      }
+    if (is.zoo(Data)){
+      basePeriod <- window(Data, start = period$Start, end = period$End + (11/12))
+      monthly.mean <- aggregate(basePeriod , cycle(basePeriod), FUN = mean, na.rm = TRUE)
+      if (is.null(ncol(Data))){
+             out <- Data - coredata(monthly.mean)
+          } else {
+             out <- Data - coredata(monthly.mean)[coredata(cycle(Data)), ]
+      }
+    if (swapOut) Data <- asMts(Data)
+      
+    }
+     out <- removeNaStations(out)
+     return(out)  
+      
+    }
+   stop("data must be an Array, mts, or zoo") 
+  
 }
+  
+  
+ 
