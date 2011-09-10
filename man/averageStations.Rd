@@ -14,11 +14,23 @@
   for that collection of stations
  
 }
-\usage{averageStations(Mtsdata, weights = NULL, all = TRUE)
+\usage{averageStations(Mtsdata, tol, weights = NULL, all = TRUE)
+
+ 
 }
  
 \arguments{
   \item{Mtsdata}{A "mts" class object with multiple time series in columns
+ 
+}
+  \item{tol}{tolerance for calculating the psuedoinverse. The function
+   at its core relies on a psuedoinverse which relies on a singular
+   value decomposition.  That function must round very small values
+   to zero to operate effectively. This variable may require some
+   "tweaking" in cases where their are very sparse data or very large
+   data. .Machine$double.eps is a plce to start, but in some cases
+   values towards .0001 or larger are required. Errors will be
+   noticeable upon simple inspection. 
  
 }
   \item{weights}{Optional weights

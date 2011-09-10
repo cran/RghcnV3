@@ -4,7 +4,7 @@
 #
 #
 ####################################
-
+ require(maps)
  TEXAS.DAT  <- system.file("external/Texas.dat", package = "RghcnV3")
  data       <- readV3Data(filename=TEXAS.DAT,output = "Mts")
  i          <- system.file("external/Texas.inv", package = "RghcnV3")
@@ -17,7 +17,7 @@
  globe3 <- GLOBE5
  res(globe3) <- 3
 
- CellsOfZoo <- averageByCell(r = globe3, inventory = DATA$Inventory, Mts= DATA$Mts) 
+ CellsOfZoo <- averageByCell(r = globe3, inventory = DATA$Inventory, Mts= DATA$Mts,tol= .0001) 
 
  # cells of zoo will have a column for every cell
 
@@ -26,23 +26,23 @@
  # now you have a brick of months
  # image in R 2.13.1  has bugs.. argg
  # month 1000
- plot(raster(TexasBrick, layer = 1000),   main="Texas")
+ plot(raster(TexasBrick, layer = 1000),   main="Texas", xlim = c(-150,-80), ylim =c( 0,50))
  map("world", add= TRUE)
 
  unweightedAverage <- cellStats(TexasBrick, mean)
  f  <- system.file("external/Texas.dat", package = "RghcnV3")
- data <- readV3Data(filename=f)
+ data <- readV3Data(filename=f, output = "Mts")
  i <- system.file("external/Texas.inv", package = "RghcnV3")
  inv <-readInventory(i)
- data <- windowV3(data,start =1900, end = 2010)
- texasMts <- v3ToMts(data)
+ data <- window(data,start =1900, end = 2010.99)
+ 
  
 # If you window the data check that the inventory matches
- DATA <- intersectInvMts(inv,texasMts)
+ DATA <- intersectInvData(inv,data)
  globe3 <- GLOBE5
  res(globe3) <- 3
 
- CellsOfZoo <- averageByCell(r = globe3, inventory = DATA$Inventory, Mts= DATA$Mts) 
+ CellsOfZoo <- averageByCell(r = globe3, inventory = DATA$Inventory, Mts= DATA$Mts, tol = .0001) 
 
  # cells of zoo will have a column for every cell
 
@@ -52,7 +52,7 @@
  # image in R 2.13.1  has bugs.. argg
  # month 1000
  plot(raster(TexasBrick, layer = 1000), xlim =c(-150,-80), ylim =c(0,50), main="Texas")
- map("state", add= TRUE)
+ map("world", add= TRUE)
 
  unweightedAverage <- cellStats(TexasBrick, mean)
 

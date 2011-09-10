@@ -14,7 +14,7 @@
   regression on each cell to determine the optimal estimate for that cell
  
 }
-\usage{ averageByCell( inventory, Mts,r = GLOBE5)
+\usage{ averageByCell( inventory, Mts,tol,weights = NULL,r = GLOBE5)
 }
  
 \arguments{
@@ -28,6 +28,20 @@
  
 }
   \item{Mts}{A "mts" class object that has station data in columns.  
+ 
+}
+\item{tol}{tolerance for calculating the psuedoinverse. The function
+   at its core relies on a psuedoinverse which relies on a singular
+   value decomposition.  That function must round very small values
+   to zero to operate effectively. This variable may require some
+   "tweaking" in cases where their are very sparse data or very large
+   data. .Machine$double.eps is a plce to start, but in some cases
+   values towards .0001 or larger are required. Errors will be
+   noticeable upon simple inspection. 
+ 
+}
+\item{weights}{ Set to NULL. Setting to NULL   sets the weights
+  of all data to be equal within the cell.
  
 }
 }

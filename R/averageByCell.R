@@ -1,4 +1,4 @@
-averageByCell <- function( inventory, Mts,r = GLOBE5){
+averageByCell <- function( inventory, Mts,tol,weights = NULL,r = GLOBE5){
   # written by Steven Mosher
   # check class  
   if (!class(r)[1] == "RasterLayer") stop("r must be a raster object")
@@ -16,8 +16,10 @@ averageByCell <- function( inventory, Mts,r = GLOBE5){
   cellcount <- length(uCells)
   
   for( j in 1:cellcount){
-       dex <- which(DF$Cell == uCells[j])        
-       CellAve <- averageStations(Mts[ ,dex])
+       dex <- which(DF$Cell == uCells[j])
+        
+       CellAve <- averageStations(Mtsdata = Mts[ ,dex], tol = tol,weights=weights,all=TRUE)
+        
        if (j == 1){           
            out <- CellAve$Average          
         }else {           

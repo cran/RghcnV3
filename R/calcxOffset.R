@@ -1,4 +1,4 @@
-.calcxOffset = function(tdat,wts){
+.calcxOffset = function(tdat,tol,wts){
   # Author Roman M
   ## new version
  	nr = length(wts)
@@ -10,5 +10,6 @@
  	co.vec = colSums(delt.mat*tdat,na.rm=T) - colSums(rowSums(delt.mat*tdat,na.rm=T)*delt2)
  	co.mat[nr,] = wts
  	co.vec[nr]=0
- 	.psxInv(co.mat)%*%co.vec
+   
+ 	.psxInv(co.mat,tol=tol)%*%co.vec
 }

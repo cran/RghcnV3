@@ -15,9 +15,9 @@
  Zoo        <- window(Zoo,start =1900, end = 2010 +(11/12))
  Array      <- windowArray(Array,start =1900, end = 2010) 
 
- T1      <-  averageStations(mts)
- T2      <-  averageStations(asMts(Zoo))
- T3      <- averageStations(asMts(Array))
+ T1      <-  averageStations(mts, tol = .0001)
+ T2      <-  averageStations(asMts(Zoo),tol = .0001)
+ T3      <- averageStations(asMts(Array),tol = .0001)
  
  # offset the colors to see
  plot(window(T1$Average, start =1900, end =1940))

@@ -1,6 +1,7 @@
-averageStations <- function(Mtsdata, weights = NULL, all = TRUE){
+averageStations <- function(Mtsdata, tol,weights = NULL, all = TRUE){
   # orginal authors RomanM and Jeff Id
   # rewrite steven mosher, style correction and better var names
+  # modified to add tolerance
   #####################################################################      
   #  FUNCTION MAIN
   #####################################################################
@@ -23,7 +24,8 @@ averageStations <- function(Mtsdata, weights = NULL, all = TRUE){
   startYear <- dat.tsp[1]
   ####################################
  	for (month in 1:mthInYear) {
-     off.mat[month,] <- .calcxOffset(window(Mtsdata, start = c(startYear, month), deltat = 1), weights)
+     
+     off.mat[month,] <- .calcxOffset(window(Mtsdata, start = c(startYear, month), deltat = 1),tol = tol, wts = weights)
  	}
   #######################################
  	colnames(off.mat) <-  colnames(Mtsdata)
