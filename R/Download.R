@@ -21,7 +21,7 @@ downloadMask <- function(url = OCEAN.MASK.URL, directory = getwd()){
 
 
 downloadV3 <- function(url = V3.MEAN.ADJ.URL, directory = getwd(), overwrite = TRUE, remove = FALSE) {
-   require("R.utils")
+   
    if (!file.exists(directory)) dir.create(directory)
    fullDestination <- file.path(directory, basename(url), fsep = .Platform$file.sep)
    download.file(url, destfile = fullDestination, mode = "wb")

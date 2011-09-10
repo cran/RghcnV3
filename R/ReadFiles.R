@@ -3,7 +3,7 @@
 
 .cleanInvNames    <- function(names){
 # clean gchn names. Inventory specific name cleaning
-  require("R.oo")
+   
   names <- gsub("  UK ","",names,fixed=TRUE)
 	names <- gsub("  USSR ","",names,fixed=TRUE)
 	names <- gsub(" SPAIN ","",names,fixed=TRUE)
