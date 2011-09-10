@@ -1,2 +1,1 @@
-importFrom("R.utils", gunzip, listDirectory)
 exportPattern("^[[:alpha:]]+")
