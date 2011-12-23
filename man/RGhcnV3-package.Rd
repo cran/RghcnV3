@@ -21,8 +21,8 @@
 \tabular{ll}{
 Package: \tab RghcnV3\cr
 Type: \tab Package\cr
-Version: \tab 2.5\cr
-Date: \tab 2011-10-31\cr
+Version: \tab 2.6\cr
+Date: \tab 2011-12-22\cr
 License: \tab GPL (>=2)\cr
 LazyLoad: \tab yes\cr
 LazyData: \tab FALSE\cr

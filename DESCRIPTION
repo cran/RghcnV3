@@ -1,8 +1,8 @@
 Package: RghcnV3
 Type: Package
 Title: Global Historical Climate Network Version 3
-Version: 2.5
-Date: 2011-10-31
+Version: 2.6
+Date: 2011-12-23
 Author: Steven Mosher
 Maintainer: Steven Mosher <moshersteven@gmail.com>
 Depends: R (>= 2.11.0),R.utils, R.oo, R.methodsS3, zoo, raster (>=
@@ -19,6 +19,6 @@ License: GPL (>= 2)
 URL: http://stevemosher.wordpress.com/
 LazyLoad: yes
 LazyData: FALSE
-Packaged: 2011-11-01 03:54:44 UTC; steve
+Packaged: 2011-12-23 22:19:37 UTC; steve
 Repository: CRAN
-Date/Publication: 2011-11-02 17:17:12
+Date/Publication: 2011-12-24 12:10:14

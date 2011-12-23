@@ -5,7 +5,11 @@ removeNaStations<-function(Data){
     return(Data[!allMissing, , ])      
   }
   
-  if (!is.zoo(Data) & !isMts(Data)) stop("Must be a zooobject or Mts or Array")
+  if (!is.zoo(Data) & !isMts(Data) & !is.ts(Data)  ) stop(" Must be zoo, Mts,array, ts")
+    
+     
+    
+  
    
   if (!is.null(ncol(Data))){
         trecords <- nrow(Data)        

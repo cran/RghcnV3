@@ -1,4 +1,4 @@
-4076daa289956c82cca5b96525d78b91 *DESCRIPTION
+5cd5dc334e4a454f713aeeef19686d02 *DESCRIPTION
 df390c53434517b304ac5db487184641 *NAMESPACE
 665519b686164915222e1444b7fb99e6 *R/Download.R
 9eb3c45704d9cbb21ac3ea7b7abc9af3 *R/FileParameters.R
@@ -12,7 +12,7 @@ d0e5dab8b3915d26b70945a6b743e26a *R/asZoo.R
 41b8cb9d3c9c52701effba226ed4dcd5 *R/averageByCell.R
 cac246a4092afef313b0472a35220897 *R/averageStations.R
 00c89bbc6469ed1220e91c42cc23c67b *R/calcxOffset.R
-cea99bec1478211997c030afd1e2a67d *R/camMask.R
+c1e2f9899278167d980fafea14f768f5 *R/camMask.R
 4b8584d5e50882235cdc0441cffa269e *R/checkCriteria.R
 c9288ab194ece122fefeeeb9e5ef0b07 *R/createAnomaly.R
 4841a0ed80822b8c150c817b3eb3228f *R/cropInv.R
@@ -33,10 +33,12 @@ a50ebe3514558b5f812e67250c161a72 *R/rasterizeZoo.R
 a975a446234c1f2810c2d08dd5a2d2dd *R/readCruStations.R
 4fc323d0dae432c414f491c436f0789b *R/readV3Data.R
 0cdd9e667da0326aee289dc0976836f7 *R/referenceStation.R
-85156828ccc7f66c3e7a469c3135b49a *R/removeNaStations.R
+6c686253f6d5504fd7b2058967ebd6c4 *R/removeNaStations.R
+fdb8be5046a8d507a9736e3db1b288ba *R/solveTempAnnual.R
+cfc123f69e7ff0a6a0f20593556dcdbd *R/solveTempMonthly.R
 9bf25194b41781afb78622e79cd6726d *R/solveTemperature.R
 19863c3d95701b20fa81b2b5f915e2d0 *R/stationCount.R
-14662ec03199a30f7c7825b318ef0d47 *R/tempStats.R
+4938b0eb3dc10aa33e7fc8f4fbd75fe4 *R/tempStats.R
 12657adc7bd215ec801de36aaee05821 *R/toArray.R
 cfd4ddbad2b000f9d36afb733f94a3f1 *R/windowArray.R
 0600d3243b9dc0918208640da952a201 *demo/00Index
@@ -68,7 +70,7 @@ b7310926f190224e02091183a4bfc3fc *man/HADCRUT3.RESULTS.URL.Rd
 41553a9e3e61b30d0bec0c3dcdcb92f1 *man/HADSST2.RESULTS.URL.Rd
 ab2e83556418db8351d32e699a3a2afc *man/HADSST2.URL.Rd
 ccfaa35028e12b45213a041873f0bbf5 *man/OCEAN.MASK.URL.Rd
-e746d08886cabc461725a0f434544e08 *man/RghcnV3-package.Rd
+ff2af6017cb036f3caf9e65d9fbfd87a *man/RghcnV3-package.Rd
 3c0a14d86065e5d2649488ac15f6f962 *man/V3.MEAN.ADJ.URL.Rd
 a8e1eeb0da941e4381caf13fd39536f7 *man/V3.MEAN.RAW.URL.Rd
 dfad8c3e40f3ee073c19ddd245925683 *man/V3.TMAX.ADJ.URL.Rd
@@ -83,6 +85,7 @@ f6f46a117503e5910fe8feb24c55ce78 *man/anomalize.Rd
 2c9037389025c3642ebda553bb2bc313 *man/asZoo.Rd
 b07a92ad4946ef6a5b4711b384eabc8b *man/averageByCell.Rd
 6e7a54bb1f10a9e7ed23ed03eb08fd71 *man/averageStations.Rd
+342a1b3a9e915b51bdc8c04531242abf *man/camMask.Rd
 c3819e7fdf1b64a97fb452ade4afd089 *man/checkCriteria.Rd
 41bb25220fd068971ec41f6c6a6ee319 *man/createAnomaly.Rd
 fa3986bc118daab852827489b5098b4b *man/cropInv.Rd
@@ -115,6 +118,8 @@ abddb92ab7feab320d604d8ff54f0dfd *man/readHadMaps.Rd
 7e4ebb35201be85a0498e196af382d84 *man/readV3Data.Rd
 5df06793883d4c6029ececaa0d031609 *man/referenceStation.Rd
 4698f12302a95cf255666eeee0757457 *man/removeNaStations.Rd
+774fb230ed2610c506d54f05294fee3e *man/solveTempAnnual.Rd
+da3c9b9c201d616c3dc6f054b377a4c8 *man/solveTempMonthly.Rd
 f1e0066a213e166fd69052f6cf28b935 *man/solveTemperature.Rd
 8e2a3f316266ae0557de3a91573007bf *man/stationCount.Rd
 fe9ff73e6960715143ace1590cc6f7f7 *man/tempStats.Rd

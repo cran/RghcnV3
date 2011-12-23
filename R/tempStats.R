@@ -27,9 +27,9 @@ tempStats <- function(data){
     
     FY[FY < as.integer(min(time(data)))] <- NA
     
-    maskEarly <- .camMask(data,criteria = list(Start = min(time(data)), 
+    maskEarly <-  camMask(data,criteria = list(Start = min(time(data)), 
                                                End = (min(time(data))+9) , Years = 10, Threshold = 10))
-    maskLate <- .camMask(data,criteria = list(Start = (max(time(data))-9), 
+    maskLate <-  camMask(data,criteria = list(Start = (max(time(data))-9), 
                                                End =  max(time(data))  , Years = 10, Threshold = 10))
      
     DF      <- data.frame(Id = names(AveTemp), mean = AveTemp,max = MaxTemp, 

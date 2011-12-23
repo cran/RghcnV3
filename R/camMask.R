@@ -1,4 +1,4 @@
-.camMask <- function(Data, criteria = list(Start = 1961, End = 1990, Years = 15, Threshold = 12)){
+camMask <- function(Data, criteria = list(Start = 1961, End = 1990, Years = 15, Threshold = 12)){
        
         criteria <- checkCriteria(criteria)
          
