@@ -1,14 +1,21 @@
 removeNaStations<-function(Data){
   
   if (isArray(Data)){   
-    allMissing <- apply(is.na(Data), MARGIN = 1, FUN = all)     
+    allMissing <- apply(is.na(Data), MARGIN = 1, FUN = all) 
+    if(sum(allMissing) == 0) return(Data) else
     return(Data[!allMissing, , ])      
   }
   
-  if (!is.zoo(Data) & !isMts(Data) & !is.ts(Data)  ) stop(" Must be zoo, Mts,array, ts")
+  if (!is.zoo(Data) & !isMts(Data) & !is.ts(Data) & !isBigMatrix(Data) ) stop(" Must be zoo, Mts,array, ts")
     
      
+  if ( isBigMatrix(Data) == TRUE){
+    ncount <- colna(Data, seq(1,ncol(Data)))
+    dex    <- which(ncount < nrow(Data))
+    Data   <- Data[,dex]
+    return(Data)
     
+  }  
   
    
   if (!is.null(ncol(Data))){

@@ -1,4 +1,4 @@
-5cd5dc334e4a454f713aeeef19686d02 *DESCRIPTION
+4a7f0c855129e08bf950965e175792e0 *DESCRIPTION
 df390c53434517b304ac5db487184641 *NAMESPACE
 665519b686164915222e1444b7fb99e6 *R/Download.R
 9eb3c45704d9cbb21ac3ea7b7abc9af3 *R/FileParameters.R
@@ -10,7 +10,7 @@ a3e8b1cd01dce0252206ecc1ec2424f0 *R/asArray.R
 9fa48c04e31bd34745c7cfb83a46ee24 *R/asMts.R
 d0e5dab8b3915d26b70945a6b743e26a *R/asZoo.R
 41b8cb9d3c9c52701effba226ed4dcd5 *R/averageByCell.R
-cac246a4092afef313b0472a35220897 *R/averageStations.R
+b2244afee7613163d7af9efd8f442799 *R/averageStations.R
 00c89bbc6469ed1220e91c42cc23c67b *R/calcxOffset.R
 c1e2f9899278167d980fafea14f768f5 *R/camMask.R
 4b8584d5e50882235cdc0441cffa269e *R/checkCriteria.R
@@ -19,9 +19,10 @@ c9288ab194ece122fefeeeb9e5ef0b07 *R/createAnomaly.R
 e13f27c35a10de2c257c8d0730faa09c *R/getDemoFiles.R
 a42d06eb92ea04ac77765782cb5b0e88 *R/getLonLat.R
 e676ea045934f4a4e438fc7b751807e1 *R/getStations.R
-6959fa44640292eebb3529d68055c8a9 *R/intersectInvData.R
+e806edd9063b91e2119e5e85d5616e1f *R/intersectInvData.R
 62a2a133c4905fe39ee924ebbc112375 *R/inverseDensity.R
 2d361a54b7eb42107ba0b605adc40bf7 *R/isArray.R
+baf9c34cf8589a19bbc852d8ca3821de *R/isBigMatrix.R
 17ba4c531dd404c86928f034447d7a60 *R/isInventory.R
 0b442b420b56141b588f88661cefd020 *R/isMts.R
 5272616746873bf2c552c5bef0c0d62f *R/keepIf.R
@@ -33,13 +34,14 @@ a50ebe3514558b5f812e67250c161a72 *R/rasterizeZoo.R
 a975a446234c1f2810c2d08dd5a2d2dd *R/readCruStations.R
 4fc323d0dae432c414f491c436f0789b *R/readV3Data.R
 0cdd9e667da0326aee289dc0976836f7 *R/referenceStation.R
-6c686253f6d5504fd7b2058967ebd6c4 *R/removeNaStations.R
+4e511b7e4779fcda4d64930c65fb1e26 *R/removeNaStations.R
 fdb8be5046a8d507a9736e3db1b288ba *R/solveTempAnnual.R
 cfc123f69e7ff0a6a0f20593556dcdbd *R/solveTempMonthly.R
 9bf25194b41781afb78622e79cd6726d *R/solveTemperature.R
 19863c3d95701b20fa81b2b5f915e2d0 *R/stationCount.R
 4938b0eb3dc10aa33e7fc8f4fbd75fe4 *R/tempStats.R
 12657adc7bd215ec801de36aaee05821 *R/toArray.R
+8499526a6d7e62b1030af396bfc63a65 *R/trimNa.R
 cfd4ddbad2b000f9d36afb733f94a3f1 *R/windowArray.R
 0600d3243b9dc0918208640da952a201 *demo/00Index
 6dbd4ef492c2ee8c686ebede575658fa *demo/Airports.R
@@ -70,7 +72,7 @@ b7310926f190224e02091183a4bfc3fc *man/HADCRUT3.RESULTS.URL.Rd
 41553a9e3e61b30d0bec0c3dcdcb92f1 *man/HADSST2.RESULTS.URL.Rd
 ab2e83556418db8351d32e699a3a2afc *man/HADSST2.URL.Rd
 ccfaa35028e12b45213a041873f0bbf5 *man/OCEAN.MASK.URL.Rd
-ff2af6017cb036f3caf9e65d9fbfd87a *man/RghcnV3-package.Rd
+a77fffe21ce759b73fdf0b830a2b006b *man/RghcnV3-package.Rd
 3c0a14d86065e5d2649488ac15f6f962 *man/V3.MEAN.ADJ.URL.Rd
 a8e1eeb0da941e4381caf13fd39536f7 *man/V3.MEAN.RAW.URL.Rd
 dfad8c3e40f3ee073c19ddd245925683 *man/V3.TMAX.ADJ.URL.Rd
@@ -100,6 +102,7 @@ fa3986bc118daab852827489b5098b4b *man/cropInv.Rd
 0bcc7d5d9067512daf14c30511bcb591 *man/intersectInvData.Rd
 5834f9cdb4193f913fef6a52361308ec *man/inverseDensity.Rd
 18d3206e3030929c502387f8a52c9e88 *man/isArray.Rd
+bf9bedaed7403dd5bcbc8e9d7cdb16ba *man/isBigMatrix.Rd
 6bae6d5d85103c28c5758f1075d9f1fc *man/isInventory.Rd
 85094005e1192832910d471507c85469 *man/isMts.Rd
 7a6a79c399e951506940dfce0a3dcb73 *man/keepIf.Rd
@@ -113,7 +116,7 @@ abddb92ab7feab320d604d8ff54f0dfd *man/readHadMaps.Rd
 6bf4c0a5e1609f5fca70ebbc1591bc0f *man/readInventory.Rd
 90af60ccfbb90a73e639ec66f4a5649b *man/readMask.Rd
 9b145ee1cb203eb97b7c3269c750b84b *man/readMaskDeg1.Rd
-333fa478cb86c7e599d84e0b2a3e5bed *man/readQC.Rd
+e3e88072b24680924612a552e0d7aa29 *man/readQC.Rd
 9a5ac1ee7aa3b5b0c1020911dc89a040 *man/readSST.Rd
 7e4ebb35201be85a0498e196af382d84 *man/readV3Data.Rd
 5df06793883d4c6029ececaa0d031609 *man/referenceStation.Rd
@@ -123,4 +126,5 @@ da3c9b9c201d616c3dc6f054b377a4c8 *man/solveTempMonthly.Rd
 f1e0066a213e166fd69052f6cf28b935 *man/solveTemperature.Rd
 8e2a3f316266ae0557de3a91573007bf *man/stationCount.Rd
 fe9ff73e6960715143ace1590cc6f7f7 *man/tempStats.Rd
+8af55df0b757447d9c3dcba0a487447c *man/trimNA.Rd
 0f734c8bbe1951a46a7928ae4ca47ff2 *man/windowArray.Rd

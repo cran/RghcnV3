@@ -46,9 +46,7 @@ readQC(filename, Parameters = FILE.PARAMETERS)
  
 }
  
-\examples{
-  
-}
+ 
  
 \keyword{ file }
  

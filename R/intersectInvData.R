@@ -8,18 +8,21 @@ intersectInvData <- function(inventory, Data){
       common       <- intersect(invStations,dataStations)
       if (length(common) == 0) stop("No Stations in intersection")
       inventory    <- inventory[which(invStations %in% common), ]
-      
+      o <- order(inventory$Id)
       if (isMts(Data)){
           Data  <- Data[ ,which(dataStations %in% common)]
+          Data  <- Data[,o]
           return(list(Inventory = inventory, Mts = Data))
       }
       if (is.zoo(Data)){
           Data  <- Data[ ,which(dataStations %in% common)]
+          Data  <- Data[,o]
           return(list(Inventory = inventory, Zoo = Data))
         
       }
       if (isArray(Data)){
            Data  <- Data[which(dataStations %in% common), , ]
+           Data  <- Data[o, , ]
           return(list(Inventory = inventory, Array = Data))
         
       }

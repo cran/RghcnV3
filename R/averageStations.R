@@ -44,6 +44,6 @@ averageStations <- function(Mtsdata, tol,weights = NULL, all = TRUE){
 		pred     <- c(temp) + matoff
  		residual <- Mtsdata - pred
 	}
-	list(Average = ts(temp,start = c(startYear ,1), freq = 12),
+	list(Average = ts(temp,start = c(startYear ,1), frequency = 12),
        Prediction = pred, Residual = residual, Offsets = off.mat)
 }
