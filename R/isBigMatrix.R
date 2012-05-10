@@ -1,6 +1,6 @@
 isBigMatrix <- function(x){
   
-  if ( class(x) != "big.matrix") return(FALSE) 
+  if ( class(x)[1] != "big.matrix") return(FALSE) 
   return(TRUE)
   
 }

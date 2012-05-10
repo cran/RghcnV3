@@ -11,7 +11,8 @@
   find those stations in the temperature data. This function accepts the three
   basic dataset as an input ( Array, Zoo and Mts) along with a inventory. 
   The input Inventory and the input data  are both reconciled and on output 
-  both are adjusted to have matching stations. 
+  both are adjusted to have matching stations. Stations are also sorted so
+  that the Ids are in a common order. 
   
  
 }
@@ -26,7 +27,7 @@
  
 }
 }
-\details{It's often quicker to prune the V3   data  prior to creating
+\details{It's often quicker to prune the  data  prior to creating
   anomalies. So, for example one can "window" the
   data or you can select a subset of the stations before you turn the
   temperature data  into an anomaly series. For example, you could select

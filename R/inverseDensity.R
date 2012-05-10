@@ -15,11 +15,15 @@ inverseDensity <- function(inv, Data, r = GLOBE5){
   halfLat       <- latBin/2
   eq            <- halfLat * (lonBin +1) + (halfLat+1)
   cellSize      <- res(r)[1]
-  cellId   <- floor(inv$Lat/cellSize) * lonBin   +  floor(inv$Lon/cellSize) + eq
+  cellId   <- cellFromXY(r,cbind(inv$Lon,inv$Lat))
+   
   #weights for latitude changes
-  latWeight <- sin((1:latBin-0.5)*pi/latBin) 
-  #weights for every lat/lon
-  allWeights  <- rep(latWeight, each = lonBin)
+  Rarea <- area(r)*r
+  maxCell <- max(extract(Rarea,1:ncell(Rarea)), na.rm =T)
+  Rarea <- Rarea/maxCell
+   
+  allWeights  <- extract(Rarea, 1:ncell(Rarea))
+   
   for(months in 1:dimensions[2]){
       for(years in 1:dimensions[3]){
            # get T/F if temperature is there
@@ -40,7 +44,7 @@ inverseDensity <- function(inv, Data, r = GLOBE5){
       }
       
   }
-  return(weights)
+  return( weights )
   }
   if ( !isInventory(inv) ) stop(" must be a valid inventory")
   if ( !isArray(Data)) stop("must be a valid data array")

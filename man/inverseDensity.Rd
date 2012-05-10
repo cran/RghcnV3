@@ -27,7 +27,16 @@
   a  Zoo type object covert using \code{asZoo}
  
 }
-  \item{r}{a raster layer. This is used to generate cell values
+  \item{r}{a raster layer. The resolution of the raster determines the
+  gridding of the data. It also determines the Area used for weighting.
+  The raster cells should have values between 0 and 1. These values
+  should represent the FRACTION of each cell that should be used in
+  the area calculation. This allows you to use a land mask to mask
+  off portions of a cell that are Ocean or water or outside an
+  area of interest. A value of  .5 indicates that half of a cells
+  area should not be used. A cel thatis 50 percent water thus would
+  have its area adjusted accordingly. This also lets you use irregular
+  areas or polygons inside the square raster
  
 }
 }
@@ -42,7 +51,7 @@
 }
  
 \author{Nick Stokes, rewritten for integration
-  by Steven Mosher
+  by Steven Mosher. Land masking added by Steven Mosher
  
 }
  

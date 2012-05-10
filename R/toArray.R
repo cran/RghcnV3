@@ -10,8 +10,9 @@
   start    <- min(v3Data[,2]) - 1
   end      <- max(v3Data[,2])
   
-  stationIndex <- c(0, which(diff(v3Data[,1]) > 0), stations)  
+  stationIndex <- c(0, which(diff(v3Data[,1]) != 0), stations)  
   stationCount <- length(stationIndex) - 1 
+   
   x            <- array(NA,c(stationCount,12, end - start))
   dimnames(x) <-  list(unique(v3Data[ ,1]),month.abb,min(v3Data[ ,2]):max(v3Data[ ,2]))
    

@@ -5,17 +5,17 @@
  
 }
 \description{reads CRU station data and returns a user slected data format:
-  Zoo, mts or Array
+  Zoo, mts or Array. The function supports both CRU3 and CRU4
  
 }
-\usage{readCruStations(filename = "stations-data.txt", output = c("Array", "Zoo", "Mts"))
+\usage{readCruStations(inFile , output = c("Array", "Zoo", "Mts"))
 }
  
 \arguments{
-  \item{filename}{The default filename of CRU station data
+  \item{inFile}{The   filename of CRU station data
  
 }
-  \item{output}{Select On of these three data output options
+  \item{output}{Select One of these three data output options
  
 }
 }

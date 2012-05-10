@@ -9,7 +9,7 @@ removeNaStations<-function(Data){
   if (!is.zoo(Data) & !isMts(Data) & !is.ts(Data) & !isBigMatrix(Data) ) stop(" Must be zoo, Mts,array, ts")
     
      
-  if ( isBigMatrix(Data) == TRUE){
+  if ( isBigMatrix(Data) ){
     ncount <- colna(Data, seq(1,ncol(Data)))
     dex    <- which(ncount < nrow(Data))
     Data   <- Data[,dex]

@@ -58,7 +58,7 @@ Formal class 'RasterLayer' [package "raster"] with 15 slots
   ..@ ncols     : int 72\cr
   ..@ nrows     : int 36\cr
   ..@ crs       :Formal class 'CRS' [package "sp"] with 1 slots
-  .. .. ..@ projargs: chr "+proj=longlat +datum=WGS84"\cr
+  .. .. ..@ projargs: chr "+proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0"\cr
   ..@ layernames: chr ""\cr
   ..@ zname     : chr ""\cr
   ..@ zvalue    : chr ""\cr

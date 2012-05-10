@@ -10,6 +10,7 @@ asMts <- function(x){
         out   <-   ts(out, start = begin, frequency = 12)
     return(out)   
   }
-  stop(cat(x, "must be an array or mts", "\n"))
+  if (isMts(x))return(x)
+  stop(  "must be an array or mts"  )
   
 }

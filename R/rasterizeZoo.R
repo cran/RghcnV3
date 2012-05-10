@@ -1,6 +1,6 @@
 GLOBE5   <- raster(xmn = -180, xmx = 180, ymn = -90, ymx = 90, 
                    ncol = 72, nrow = 36,
-                   crs = "+proj=longlat +datum=WGS84") 
+                   crs = "+proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0") 
 
 
 
